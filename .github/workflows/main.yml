@@ -147,7 +147,7 @@ jobs:
           push: true
           # Тут вместо username должен быть ваш логин на Docker Hub
           tags: ursmoscow/taski_gateway:latest
-deploy:
+  deploy:
     runs-on: ubuntu-latest
     needs: 
       # Дождёмся билда всех образов Taski
@@ -179,6 +179,7 @@ deploy:
         # которые нужно выполнить на сервере, 
         # с которым установлено соединение
         script: |
+          cd taski-docker/taski-docker
           # Выполняет pull образов с Docker Hub
           sudo docker compose -f docker-compose.production.yml pull
           # Перезапускает все контейнеры в Docker Compose
